@@ -21,7 +21,7 @@ public class ScheduleModify extends HttpServlet {
 	//ScheduleDatabaseをインスタンス化してScheduleDatabaseというインスタンス生成
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//http의 GET요청을 처리하는 메서드
+		//HTTPのGET要請を処理するメソッド
 		
 		int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
 		//HttpServletRequest에서 schedule_id라는 키의 파라미터값을 정수로 변환하여 schedule_id에 대입
@@ -68,7 +68,7 @@ public class ScheduleModify extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//http의 POST 요청을 처리하는 메서드
+		//HTTPのPOST要請を処理するメソッド
 			HttpSession session = request.getSession();
 			//세션을 사용하기 위한 코드
 			Schedule schedule = new Schedule();
