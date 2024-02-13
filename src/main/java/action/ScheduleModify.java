@@ -24,44 +24,36 @@ public class ScheduleModify extends HttpServlet {
 		//HTTPのGET要請を処理するメソッド
 		
 		int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
-		//HttpServletRequest에서 schedule_id라는 키의 파라미터값을 정수로 변환하여 schedule_id에 대입
+		//HttpServletRequestで schedule_idの値を整数で変換してschedule_idに代入
 		HttpSession session = request.getSession();
-		//세션을 사용하기 위한 코드
+		//セッションを使うためのコード
 		Schedule schedule = new Schedule();
-		//스케쥴 클래스의 인스턴스 생성
+		//Scheduleクラスのインスタンス生成
 		schedule = ScheduleDatabase.findSchedule(schedule_id);
-		//ScheduleDatabase에서 findSchedule메서드에 schedule_id의 값을 대입하고 리턴값을 schedule에 대입
+		//ScheduleDatabaseのfindScheduleメソッドにschedule_idの値を挿入して戻り値をscheduleに代入
 		String id = (String)session.getAttribute("USER");
-		//session에서 USER 키의 밸류값을 String으로 변환하여 id에 대입
-		//세션으로부터 유저 아이디 값을 불러와 사용
+		//sessionのUSERキーの値をStringに変換してidに代入
 		
 		String schedule_name=schedule.getSchedule_name();
-		//schedule 클래스의 Schedule_name 값을 getter 로 불러와 schedule_name에 대입
 		String schedule_date=schedule.getSchedule_date();
-		//schedule 클래스의 schedule_date 값을 getter 로 불러와 schedule_date에 대입
 		String schedule_start=schedule.getSchedule_start();
-		//schedule 클래스의 schedule_start 값을 getter 로 불러와 schedule_start에 대입
 		String schedule_end=schedule.getSchedule_end();
-		//schedule 클래스의 schedule_end 값을 getter 로 불러와 schedule_end에 대입
+		//scheduleクラスにSchedule_name,schedule_date,schedule_start,getSchedule_endを代入
 		
 		System.out.println(id);
-		//콘솔창에 id 값을 표시하여 id값을 확인
 		System.out.println(schedule_id);
-		//콘솔창에 schedule_id 값을 표시하여 schedule_id값을 확인
 		System.out.println(schedule_name);
-		//콘솔창에 schedule_name 값을 표시하여 schedule_name값을 확인
 		System.out.println(schedule_date);
-		//콘솔창에 schedule_date 값을 표시하여 schedule_date값을 확인
 		System.out.println(schedule_start);
-		//콘솔창에 schedule_start 값을 표시하여 schedule_start값을 확인
 		System.out.println(schedule_end);
-		//콘솔창에 schedule_end 값을 표시하여 schedule_end값을 확인
+		//コンソールにid,schedule_id,schedule_name,schedule_date,schedule_start,schedule_endを示す
 		
 		request.setAttribute("schedule", schedule);
-		//http요청에 schedule키의 값으로 schedule을 대입
+		//http要請にscheduleキーの値でscheduleを挿入
+		
 		request.getRequestDispatcher("scheduleModify.jsp").forward(request, response);
-		//서블릿에서 scheduleModify.jsp로 요청을 전달
-		//request, response의 값과 함께 이동시킴
+		//サーブレットからscheduleModify.jspに要請を伝達
+		//request, responseの値も一緒に移る
 	}
 
 	

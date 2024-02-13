@@ -1,5 +1,5 @@
 package dao;
-//데이터베이스에 접근하기 위한 DAO 패키지에 속하는 클래스를 선언하기 위한 선언부
+//データベースにアクセスするDAOパッケージ
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -10,14 +10,14 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import entity.DateToday;
 import entity.Schedule;
-
-public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
+//クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
+public class ScheduleDao {//Scheduleに関するDBの処理をするメソッド
 	private final String MAPPER_NAME = "mapper.scheduleMapper.";
-	// 스케쥴 매퍼의 위치를 상수로 설정
+	//スケジュールマッパを常數で宣言
 	
 	
-	public void modifySchedule(Schedule schedule) {//스케쥴을 수정하는 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+	public void modifySchedule(Schedule schedule) {//スケジュールを修正するメソッド
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		try {
 			ss.update(MAPPER_NAME+"modifySchedule",schedule);
 			//schedule를 삽입해 modifySchedule를 실행함
@@ -29,7 +29,7 @@ public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
 	
 	public void deleteSchedule(int schedule_id) {
 		//schedule_id로 검색해서 나온 스케쥴을 삭제하는 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		try {
 			ss.delete(MAPPER_NAME+"deleteSchedule",schedule_id);
 			//schedule_id를 삽입해 deleteSchedule를 실행함
@@ -41,7 +41,7 @@ public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
 	
 	public Schedule findSchedule(int schedule_id) {
 		//schedule_id로 검색해서 나온 스케쥴을 불러오는 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		Schedule schedule = new Schedule();//불러온 스케쥴을 넣을 스케쥴 인스턴스 생성
 		try {
 			schedule = ss.selectOne(MAPPER_NAME+"findSchedule",schedule_id);
@@ -54,7 +54,7 @@ public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
 	
 	public void InputSchedule(Schedule schedule) {
 		//schedule를 DB에 입력하기 위한 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		try {
 			ss.insert(MAPPER_NAME+"inputSchedule",schedule);
 			//inputSchedule쿼리를 실행하여 schedule의 값을 입력함
@@ -66,7 +66,7 @@ public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
 	
 	public Integer GetScheduleNum() {//DB에서 schedule_id가 가장 큰 값을 불러와 1을 더한 값을 반환하는 메서드
 		Integer num;//가장 큰 schedule_id를 불러오기 위한 변수 선언
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		try {
 			num = ss.selectOne(MAPPER_NAME+"getScheduleNum");
 			//getScheduleNum쿼리를 실행하고 결과값을 하나만 불러와 num에 대입
@@ -79,7 +79,7 @@ public class ScheduleDao {//Schedule과 관련된 DB처리를 하는 메서드
 
 	public ArrayList<Schedule> getSchedule(DateToday date) {//오늘 날짜 클래스인 DateToday를 입력
 		//DB에서 날짜를 기준으로 스케쥴을 검색하여 받는 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		ArrayList<Schedule> scheduleList = new ArrayList<Schedule>();
 		//스케쥴들을 저장하기 위한 ArrayList 생성
 		try {
