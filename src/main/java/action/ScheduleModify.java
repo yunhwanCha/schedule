@@ -15,8 +15,7 @@ import entity.Schedule;
 @WebServlet("/scheduleModify.do")//サーブレットを scheduleModify.doにマッピングするアノテーション
 public class ScheduleModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//serialVersionUID 직렬화된 객체의 버전번호로써 1L을 사용
-	//버전 충돌을 방지하고 직렬화된 객체의 호환성을 보장하기 위해 사용
+	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 
 	ScheduleDao ScheduleDatabase = new ScheduleDao();
 	//ScheduleDatabaseをインスタンス化してScheduleDatabaseというインスタンス生成

@@ -13,8 +13,7 @@ import javax.servlet.http.HttpSession;
 public class LogoutAction extends HttpServlet {
 	//HttpServlet을 상속받고있고 외부에서 접근 가능한 LoginServlet 클래스
 	private static final long serialVersionUID = 1L;
-	//serialVersionUID 직렬화된 객체의 버전번호로써 1L을 사용
-	//버전 충돌을 방지하고 직렬화된 객체의 호환성을 보장하기 위해 사용
+	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HTTP의 GET 요청을 처리하는 메서드
