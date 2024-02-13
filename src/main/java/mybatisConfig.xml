@@ -15,7 +15,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="mapper/chaMapper.xml"/>
-		<mapper resource="mapper/testMapper.xml"/>
 		<mapper resource="mapper/scheduleMapper.xml"/>
 		<mapper resource="mapper/userMapper.xml"/>
 		

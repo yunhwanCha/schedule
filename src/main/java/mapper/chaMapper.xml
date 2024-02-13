@@ -5,27 +5,27 @@
 	<select id="getPw" parameterType="String" resultType="String">
 		select pw from cha_user where id=#{id}
 	</select>
-	 <select id="getSchedule" parameterType="model.DateToday" resultType="model.Schedule">
+	 <select id="getSchedule" parameterType="entity.DateToday" resultType="entity.Schedule">
 		select * from cha_schedule where id=#{id} 
 		AND schedule_date BETWEEN #{startOfWeek} AND #{endOfWeek}
 	</select> 
 	
-	<!-- <select id="getSchedule" parameterType="String" resultType="model.Schedule">
+	<!-- <select id="getSchedule" parameterType="String" resultType="entity.Schedule">
 		select * from cha_schedule where id=#{id} 
 	</select>  -->
 	
 	<select id="getScheduleNum" resultType="Integer">
 	select max(schedule_id) from cha_schedule
 	</select>
-	<insert id="inputSchedule" parameterType="model.Schedule">
+	<insert id="inputSchedule" parameterType="entity.Schedule">
 		insert into cha_schedule 
 		  values(#{schedule_id},#{id},#{schedule_name},#{schedule_date},
 		  #{schedule_start},#{schedule_end})
 	</insert>
-	<select id="findSchedule" parameterType="Integer" resultType="model.Schedule">
+	<select id="findSchedule" parameterType="Integer" resultType="entity.Schedule">
 		select * from cha_schedule where schedule_id=#{schedule_id}
 	</select>
-	<update id="modifySchedule" parameterType="model.Schedule">
+	<update id="modifySchedule" parameterType="entity.Schedule">
 		update cha_schedule set schedule_name = #{schedule_name} , schedule_date=#{schedule_date},
 		schedule_start=#{schedule_start},schedule_end=#{schedule_end} where schedule_id=#{schedule_id}
 	</update>

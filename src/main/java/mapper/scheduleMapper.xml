@@ -4,7 +4,7 @@
 <mapper namespace="mapper.scheduleMapper">
 <!--MyBatis의 XML 매퍼파일에서 네임스페이스를 지정  -->
 
-	 <select id="getSchedule" parameterType="model.DateToday" resultType="model.Schedule">
+	 <select id="getSchedule" parameterType="entity.DateToday" resultType="entity.Schedule">
 		select * from cha_schedule where id=#{id} 
 		AND schedule_date BETWEEN #{startOfWeek} AND #{endOfWeek}
 	</select> <!--cha_schedule에서 startOfWeek와 endOfWeek 날짜 사이의 id의 스케쥴을 검색 -->
@@ -13,20 +13,20 @@
 	select max(schedule_id) from cha_schedule
 	</select><!-- cha_schedule에서schedule_id의 맥스값을 검색하는 쿼리 -->
 	
-	<insert id="inputSchedule" parameterType="model.Schedule">
+	<insert id="inputSchedule" parameterType="entity.Schedule">
 		insert into cha_schedule 
 		  values(#{schedule_id},#{id},#{schedule_name},#{schedule_date},
 		  #{schedule_start},#{schedule_end})
-	</insert><!-- cha_schedule에서 model.Schedule의 값들을 입력하는 쿼리 -->
+	</insert><!-- cha_schedule에서 entity.Schedule의 값들을 입력하는 쿼리 -->
 	
-	<select id="findSchedule" parameterType="Integer" resultType="model.Schedule">
+	<select id="findSchedule" parameterType="Integer" resultType="entity.Schedule">
 		select * from cha_schedule where schedule_id=#{schedule_id}
 	</select><!--cha_schedule에서 schedule_id의 스케쥴을 검색하는 쿼리  -->
 	
-	<update id="modifySchedule" parameterType="model.Schedule">
+	<update id="modifySchedule" parameterType="entity.Schedule">
 		update cha_schedule set schedule_name = #{schedule_name} , schedule_date=#{schedule_date},
 		schedule_start=#{schedule_start},schedule_end=#{schedule_end} where schedule_id=#{schedule_id}
-	</update><!-- cha_schedule에서 원래 스케쥴의 값을 model.Schedule의 값들로 변경하는 쿼리-->
+	</update><!-- cha_schedule에서 원래 스케쥴의 값을 entity.Schedule의 값들로 변경하는 쿼리-->
 	
 	<delete id="deleteSchedule" parameterType="Integer">
 		delete from cha_schedule where schedule_id = #{schedule_id}
