@@ -41,10 +41,12 @@ public class LoginAction extends HttpServlet {
 				//idの値をセッションの"USER"キーに入れる
 				response.sendRedirect("main.jsp");
 				//"main.jsp"にリダイレクト
+				//メーン画面に戻る
 			}else {
-				login="not ok";
+				login="not ok";//ログイン失敗を表す
 				response.sendRedirect("login.jsp?R="+login);
-				return;
+				//loginの値をRという名前で"main.jsp"にリダイレクトするとき一緒に送る
+				
 			}//else
 		}//else
 

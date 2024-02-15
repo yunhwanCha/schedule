@@ -1,26 +1,29 @@
 package dao;
-//데이터베이스에 접근하기 위한 DAO 패키지에 속하는 클래스를 선언하기 위한 선언부
+//データベースにアクセスするDAOパッケージ
+
 import java.io.InputStream;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-//패키지 외부의 클래스, 패키지, 라이브러리를 사용하기 위해 import로 선언
-public class UserDao {//User와 관련된 DB처리를 하는 메서드
+//クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
+
+public class UserDao {//Userに関するDBの処理をするメソッド
+	//private,protectにするとサーブレットから呼び出せない
 	private final String MAPPER_NAME = "mapper.userMapper.";
-	// 스케쥴 매퍼의 위치를 상수로 설정
+	//スケジュールマッパを常數で宣言
 	
-	public String getPw(String id) {//User DB 에서 id로 검색해서 나온 pw값을 받는 메서드
-		SqlSession ss = getSession();//MyBatis의 SqlSession을 생성하여 DB에 연결
-		String pw;//pw값을 넣을 변수 선언
+	public String getPw(String id) {//User DBでidで検索してそのpwの値をもらう
+		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
+		String pw;//pw値を入れる変数宣言
 		try {
 			pw = ss.selectOne(MAPPER_NAME+"getPw",id);
-			//id를 넣어 getPw 쿼리를 실행하고 결과 1개를 pw에 대입함
+			//idを入れてgetPwクエリを実行しれその結果をpwに入れる
 		}finally {
-			ss.close();//DB와 연결 끊음
+			ss.close();//DBとの接続を切る
 		}
-		return pw;//pw값을 리턴함
+		return pw;//pwの値をリターン
 	}
 	
 	private SqlSession getSession() {//mybatis와 상호작용하기 위한 메서드

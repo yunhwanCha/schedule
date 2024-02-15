@@ -19,8 +19,12 @@ public class LogoutAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HTTPのGET要請を処理するメソッド
 		HttpSession session = request.getSession();
+		//HTTP要請でセッションを返還するメソッドrequest.getSession();
 		session.invalidate();
+		//現在のセッションのデータを消す
 		response.sendRedirect("main.jsp");
+		//"main.jsp"にリダイレクト
+		//メーン画面に戻る
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

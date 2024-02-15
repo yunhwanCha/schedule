@@ -30,11 +30,11 @@ public class ScheduleInputAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HTTPのPOST要請を処理するメソッド
 		ScheduleDao ScheduleDatabase = new ScheduleDao();
-		//ScheduleDatabaseクラスをインスタンス化してScheduleDatabaseというインスタンスを生成
+		//ScheduleDaoクラスをインスタンス化してScheduleDatabaseというインスタンスを生成
 		HttpSession session = request.getSession();
 		//セッションを使うためにHttpServletRequestのgetSession()メソッドを呼び出してsessionに代入
 		Cha_schedule schedule = new Cha_schedule();
-		//scheduleクラスのインスタンス生成
+		//Cha_scheduleクラスのインスタンス生成
 		String id = (String)session.getAttribute("USER");
 		//セッションからIDを呼び出してidに代入
 		int schedule_id=ScheduleDatabase.GetScheduleNum();

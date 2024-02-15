@@ -20,7 +20,7 @@ public class ScheduleDeleteAction extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ScheduleDao ScheduleDatabase = new ScheduleDao();
-		//ScheduleDatabase클래스를 생성자를 사용하여 ScheduleDatabase라는 이름의 인스턴스 생성
+		//ScheduleDaoクラスをインスタンス化してScheduleDatabaseというインスタンスを生成
 		int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
 		//HttpServletRequest에서 schedule_id라는 키의 파라미터값을 정수로 변환하여 schedule_id에 대입
 		ScheduleDatabase.deleteSchedule(schedule_id);

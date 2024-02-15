@@ -13,7 +13,7 @@ import entity.Cha_schedule.DateToday;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
 
 public class ScheduleDao {//Scheduleに関するDBの処理をするメソッド
-	//privateにするとサーブレットから呼び出せない
+	//private,protectにするとサーブレットから呼び出せない
 	
 	private final String MAPPER_NAME = "mapper.scheduleMapper.";
 	//スケジュールマッパを常數で宣言
@@ -69,7 +69,7 @@ public class ScheduleDao {//Scheduleに関するDBの処理をするメソッド
 		}
 	}
 	
-	public Integer GetScheduleNum() {//DB에서 schedule_id가 가장 큰 값을 불러와 1을 더한 값을 반환하는 메서드
+	public Integer GetScheduleNum() {//DBから最も大きなschedule_idの値を呼び出し1を足すメソッド
 		Integer num;//最も大きいschedule_idを呼び出すための変数宣言
 		SqlSession ss = getSession();//MyBatisのSqlSessionを生成してDBに連結
 		try {

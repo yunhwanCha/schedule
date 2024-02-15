@@ -68,43 +68,27 @@ public class ScheduleModifyAction extends HttpServlet {
 			HttpSession session = request.getSession();
 			//세션을 사용하기 위한 코드
 			Cha_schedule schedule = new Cha_schedule();
-			//스케쥴 클래스의 인스턴스 생성
+			//Cha_schedule 클래스의 인스턴스 생성
 			String id = (String)session.getAttribute("USER");
 			//세션으로부터 유저 아이디 값을 불러와 id에 대입
 			
 			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
-			//HttpServletRequest에서 schedule_id의 파라미터 값을 불러와 schedule_id에 대입
 			String schedule_name=request.getParameter("schedule_name");
-			//HttpServletRequest에서 schedule_name의 파라미터 값을 불러와 schedule_name에 대입
 			String schedule_date=request.getParameter("schedule_date");
-			//HttpServletRequest에서 schedule_date의 파라미터 값을 불러와 schedule_date에 대입
 			String schedule_start=request.getParameter("schedule_start");
-			//HttpServletRequest에서 schedule_start의 파라미터 값을 불러와 schedule_start에 대입
 			String schedule_end=request.getParameter("schedule_end");
 			//HttpServletRequest에서 schedule_end의 파라미터 값을 불러와 schedule_end에 대입
 			//리퀘스트에 있는 스케쥴의 값을 서블릿에서 쓰기 위해 작성된 코드
 			
 			
 			schedule.setId(id);
-			//setter를 이용해 스케쥴 인스턴스의 id에 id값을 삽입
 			schedule.setSchedule_id(schedule_id);
-			//setter를 이용해 스케쥴 인스턴스의 schedule_id에 schedule_id값을 삽입
 			schedule.setSchedule_name(schedule_name);
-			//setter를 이용해 스케쥴 인스턴스의 schedule_name에 schedule_name값을 삽입
 			schedule.setSchedule_date(schedule_date);
-			//setter를 이용해 스케쥴 인스턴스의 schedule_date에 schedule_date값을 삽입
 			schedule.setSchedule_start(schedule_start);
-			//setter를 이용해 스케쥴 인스턴스의 schedule_start에 schedule_start값을 삽입
 			schedule.setSchedule_end(schedule_end);
 			//setter를 이용해 스케쥴 인스턴스의 schedule_end에 schedule_end값을 삽입
 			
-			System.out.println(id);
-			System.out.println(schedule_id);
-			System.out.println(schedule_name);
-			System.out.println(schedule_date);
-			System.out.println(schedule_start);
-			System.out.println(schedule_end);
-//콘솔창에 id,schedule_id,schedule_name,schedule_date,schedule_start,schedule_end 값을 표시
 			
 			ScheduleDatabase.modifySchedule(schedule);
 			//ScheduleDatabase 클래스의 modifySchedule메서드에 schedule를 입력하여 실행
