@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ScheduleDao;
-import entity.Schedule;
+import entity.Cha_schedule;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
+
+
+
 @WebServlet("/scheduleModify.do")//サーブレットを scheduleModify.doにマッピングするアノテーション
-public class ScheduleModify extends HttpServlet {
+//アノテーションがないとJSPからサーブレットを探せない
+public class ScheduleModifyAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 
@@ -27,7 +31,7 @@ public class ScheduleModify extends HttpServlet {
 		//HttpServletRequestで schedule_idの値を整数で変換してschedule_idに代入
 		HttpSession session = request.getSession();
 		//セッションを使うためのコード
-		Schedule schedule = new Schedule();
+		Cha_schedule schedule = new Cha_schedule();
 		//Scheduleクラスのインスタンス生成
 		schedule = ScheduleDatabase.findSchedule(schedule_id);
 		//ScheduleDatabaseのfindScheduleメソッドにschedule_idの値を挿入して戻り値をscheduleに代入
@@ -63,7 +67,7 @@ public class ScheduleModify extends HttpServlet {
 		//HTTPのPOST要請を処理するメソッド
 			HttpSession session = request.getSession();
 			//세션을 사용하기 위한 코드
-			Schedule schedule = new Schedule();
+			Cha_schedule schedule = new Cha_schedule();
 			//스케쥴 클래스의 인스턴스 생성
 			String id = (String)session.getAttribute("USER");
 			//세션으로부터 유저 아이디 값을 불러와 id에 대입

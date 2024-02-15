@@ -13,7 +13,8 @@ import dao.ScheduleDao;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
 
 @WebServlet("/scheduleDelete.do")//サーブレットを scheduleDelete.doにマッピングするアノテーション
-public class ScheduleDelete extends HttpServlet {
+//アノテーションがないとJSPからサーブレットを探せない
+public class ScheduleDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 

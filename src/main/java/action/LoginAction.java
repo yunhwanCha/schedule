@@ -13,7 +13,8 @@ import dao.UserDao;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
 @WebServlet("/login.do")//サーブレットを login.doにマッピングするアノテーション
 public class LoginAction extends HttpServlet {
-	//HttpServlet을 상속받고있고 외부에서 접근 가능한 LoginServlet 클래스
+	//HttpServletを承継していて外部からアクセスできるLoginServletクラス
+	//アノテーションがないとJSPからサーブレットを探せない
 	private static final long serialVersionUID = 1L;
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 	
@@ -35,8 +36,11 @@ public class LoginAction extends HttpServlet {
 		}else {
 			if(pw.equals(pwDB)) {
 				HttpSession session = request.getSession();
+				//HTTP要請でセッションを返還するメソッドrequest.getSession();
 				session.setAttribute("USER", id);
+				//idの値をセッションの"USER"キーに入れる
 				response.sendRedirect("main.jsp");
+				//"main.jsp"にリダイレクト
 			}else {
 				login="not ok";
 				response.sendRedirect("login.jsp?R="+login);

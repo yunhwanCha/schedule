@@ -1,7 +1,7 @@
 package entity;
 //model 패키지에 속하는 클래스를 선언하기 위한 선언부
 
-public class Schedule {
+public class Cha_schedule {
 	private int schedule_id;
 	private String id;
 	private String schedule_name;
@@ -47,7 +47,32 @@ public class Schedule {
 		this.schedule_end = schedule_end;
 	}//schedule_end의 값을 외부에서 설정하기 위한 메서드
 	
-	
+	public class DateToday {//スケジュールクラスの内部クラスとして宣言される
+		private String startOfWeek;
+		private String endOfWeek;
+		private String id;
+		//정보 은닉과 캡슐화를 위해 private를 사용하여 외부에서 접근할 수 없는 변수 선언
+		
+		public String getStartOfWeek() {
+			return startOfWeek;
+		}//startOfWeekの値を外部に返還
+		public void setStartOfWeek(String startOfWeek) {
+			this.startOfWeek = startOfWeek;
+		}//startOfWeekの値を外部から設定するためのメソッド
+		public String getEndOfWeek() {
+			return endOfWeek;
+		}//EndOfWeekの値を外部に返還
+		public void setEndOfWeek(String endOfWeek) {
+			this.endOfWeek = endOfWeek;
+		}//endOfWeekの値を外部から設定するためのメソッド
+		public String getId() {
+			return id;
+		}//id의 값の値を外部に返還
+		public void setId(String id) {
+			this.id = id;
+		}//idの値を外部から設定するためのメソッド
+		
+	}
 	
 	
 	

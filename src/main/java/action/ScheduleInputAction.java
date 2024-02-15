@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ScheduleDao;
-import entity.Schedule;
+import entity.Cha_schedule;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言　　
 @WebServlet("/scheduleInput.do")//サーブレットを scheduleInput.doにマッピングするアノテーション
-public class ScheduleInput extends HttpServlet {
+//アノテーションがないとJSPからサーブレットを探せない
+public class ScheduleInputAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 	
@@ -32,7 +33,7 @@ public class ScheduleInput extends HttpServlet {
 		//ScheduleDatabaseクラスをインスタンス化してScheduleDatabaseというインスタンスを生成
 		HttpSession session = request.getSession();
 		//セッションを使うためにHttpServletRequestのgetSession()メソッドを呼び出してsessionに代入
-		Schedule schedule = new Schedule();
+		Cha_schedule schedule = new Cha_schedule();
 		//scheduleクラスのインスタンス生成
 		String id = (String)session.getAttribute("USER");
 		//セッションからIDを呼び出してidに代入
