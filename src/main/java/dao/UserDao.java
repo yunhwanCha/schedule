@@ -26,25 +26,33 @@ public class UserDao {//Userに関するDBの処理をするメソッド
 		return pw;//pwの値をリターン
 	}
 	
-	private SqlSession getSession() {//mybatis와 상호작용하기 위한 메서드
+	private SqlSession getSession() {//mybatisと相互作用するためのメソッド
 		String config = "mybatisConfig.xml";
-		//mybatisConfig.xml 에서 설정을 가져와 config에 대입
+		//mybatisConfig.xmlから設定を持ってきてconfigに入れる
 		
 		InputStream is = null;
-		//설정 파일을 읽어오기 위한 InputStream을 초기화
+		//設定を読むためのInputStreamを初期化
+		//nullで初期化しないと 
+		//SqlSessionFactory factory = builder.build(is);この行で
+		//The local variable is may not have been initializedっていうエラーが発生する
+		//Javaでローカル変数を使うとき、初期値を設定しなければならない
 		
-		try {//예외가 발생할 수도 있는 코드
-			is = Resources.getResourceAsStream(config);//config의 파일 경로를 읽어 is에 대입
-		}catch(Exception e) {}//예외를 처리하지 않음
+		
+		try {//例外が発生する可能性がある
+			is = Resources.getResourceAsStream(config);//configファイルの経路を読でisにいれる
+		}catch(Exception e) {//全ての例外をeっていう変数に割り当てる
+			e.printStackTrace();//例外を出力
+		}
 		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-		//MyBatis의 SqlSessionFactoryBuilder를 사용하여 SqlSessionFactory를 생성
+		//MyBatisのSqlSessionFactoryBuilderを使ってSqlSessionFactoryを生成
 		SqlSessionFactory factory = builder.build(is);
-		//SqlSessionFactoryBuilder에서 is 의 주소에서 설정파일을 불러와 SqlSessionFactory생성
+		//SqlSessionFactoryBuilderでisの住所から設定ファイルを呼び出してSqlSessionFactoryを生成
 		SqlSession ss = factory.openSession();
-		//SqlSessionFactory의 openSession()으로 SqlSession 생성
-		//SqlSession 데이터베이스 연산을 수행하기 위한 인터페이스
+		//SqlSessionFactoryのopenSession()でSqlSession を生成
+		//SqlSessionデータベース演算をするためのインターフェース
 		
-		return ss;//SqlSession ss 를 반환
+		
+		return ss;//ssを返還
 }
 	
 }

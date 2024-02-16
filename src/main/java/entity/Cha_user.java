@@ -1,23 +1,32 @@
 package entity;
-//model 패키지에 속하는 클래스를 선언하기 위한 선언부
+//entityパッケージ
+//entityはテーブルのカラムと1対1に対応するように作る
+
 public class Cha_user {
 private String id;
 private String pw;
+private String name;
 
-//정보 은닉과 캡슐화를 위해 private를 사용하여 외부에서 접근할 수 없는 변수 선언
+//カプセル化のためにprivateを使って外部からアクセスできない変数を宣言
 
 public String getId() {
 	return id;
-}//id의 값을 외부로 반환하는 메서드
+}//idの値を外部に返還
 public void setId(String id) {
 	this.id = id;
-}//id의 값을 외부에서 설정하기 위한 메서드
+}//idの値を外部から設定するためのメソッド
 public String getPw() {
 	return pw;
-}//pw의 값을 외부로 반환하는 메서드
+}//pwの値を外部に返還
 public void setPw(String pw) {
 	this.pw = pw;
-}//pw의 값을 외부에서 설정하기 위한 메서드
+}//pwの値を外部から設定するためのメソッド
+public String getName() {
+	return name;
+}//nameの値を外部に返還
+public void setName(String name) {
+	this.name = name;
+}//nameの値を外部から設定するためのメソッド
 
 
 }

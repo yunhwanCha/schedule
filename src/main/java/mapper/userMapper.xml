@@ -4,5 +4,5 @@
 <mapper namespace="mapper.userMapper">
 	<select id="getPw" parameterType="String" resultType="String">
 		select pw from cha_user where id=#{id}
-	</select>
+	</select><!-- cha_userからidに対応するpwを出力 -->
 </mapper>
