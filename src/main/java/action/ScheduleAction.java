@@ -77,7 +77,7 @@ public class ScheduleAction extends HttpServlet {
 		//ユーザーを識別してユーザーに合う情報を貯蔵できる
 		
 		String id = (String)session.getAttribute("USER");
-		//sessionのgetAttributeメソッドを呼び出してセッションから"USER"キーの値を持ってくる
+		//セッションから"USER"キーの値を呼び出してidに入れる
 		//ログインしているユーザーのID情報を呼び出すために使う
 		
 		Integer weeks;

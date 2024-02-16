@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 //クラス外部のクラス、パッケージ、ライブラリを使うためにimportで宣言
+
 @WebServlet("/login.do")//サーブレットを login.doにマッピングするアノテーション
 public class LoginAction extends HttpServlet {
 	//HttpServletを承継していて外部からアクセスできるLoginServletクラス
@@ -19,9 +20,9 @@ public class LoginAction extends HttpServlet {
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HTTP의 GET 요청을 처리하는 메서드
+	//HTTPのGET要請を処理するメソッド
 	response.sendRedirect("login.jsp");
-	//login.jsp로 리다이렉트시킴
+	//login.jspにリダイレクト
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

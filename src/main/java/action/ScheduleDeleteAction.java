@@ -19,20 +19,21 @@ public class ScheduleDeleteAction extends HttpServlet {
 	//クラスと逆直列化しようとするオブジェクトのserialVersionUIDを比べて一致しないとInvalidClassExceptionが発生
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//HTTPのGET要請を処理するメソッド	
 		ScheduleDao ScheduleDatabase = new ScheduleDao();
 		//ScheduleDaoクラスをインスタンス化してScheduleDatabaseというインスタンスを生成
 		int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
-		//HttpServletRequest에서 schedule_id라는 키의 파라미터값을 정수로 변환하여 schedule_id에 대입
+		//HttpServletRequestでschedule_idというキーの値を定数に変換しschedule_idに入れる
 		ScheduleDatabase.deleteSchedule(schedule_id);
-		//ScheduleDatabase를 통해 schedule_id의 값을 파라미터로 deleteSchedule메서드를 실행
-		//schedule_id에 해당하는 행을 삭제
+		// schedule_idの値を入れてdeleteScheduleメソッドを実行
+		//検索結果を削除
 		response.sendRedirect("schedule.do");
-		//schedule.do로 리다이렉트
-		//삭제가 끝나면 스케쥴 화면으로 되돌아가기
+		//schedule.doにリダイレクト
+		//スケジュール画面で戻る
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// HTTP의 POST 요청을 처리하는 메서드
+		//HTTPのPOST要請を処理するメソッド
 	}
 
 }

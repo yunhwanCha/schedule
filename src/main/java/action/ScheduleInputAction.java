@@ -23,7 +23,7 @@ public class ScheduleInputAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HTTPのGET要請を処理するメソッド
 		response.sendRedirect("scheduleInput.jsp");
-		//HttpServletResponse의 sendRedirect("scheduleInput.jsp") scheduleInput.jsp로 리다이렉트
+		//scheduleInput.jspにリダイレクト
 		//ページを移る
 	}
 

@@ -66,19 +66,20 @@ public class ScheduleModifyAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HTTPのPOST要請を処理するメソッド
 			HttpSession session = request.getSession();
-			//세션을 사용하기 위한 코드
+			//セッションを使うためにHttpServletRequestのgetSession()メソッドを呼び出してsessionに代入
 			Cha_schedule schedule = new Cha_schedule();
-			//Cha_schedule 클래스의 인스턴스 생성
+			//Cha_scheduleクラスのインスタンス生成
 			String id = (String)session.getAttribute("USER");
-			//세션으로부터 유저 아이디 값을 불러와 id에 대입
+			//セッションから"USER"キーの値を呼び出してidに入れる
 			
 			int schedule_id = Integer.parseInt(request.getParameter("schedule_id"));
 			String schedule_name=request.getParameter("schedule_name");
 			String schedule_date=request.getParameter("schedule_date");
 			String schedule_start=request.getParameter("schedule_start");
 			String schedule_end=request.getParameter("schedule_end");
-			//HttpServletRequest에서 schedule_end의 파라미터 값을 불러와 schedule_end에 대입
-			//리퀘스트에 있는 스케쥴의 값을 서블릿에서 쓰기 위해 작성된 코드
+			//HttpServletRequestでschedule_id,schedule_name,schedule_date,schedule_start,schedule_endの値を呼び出して
+			//変数schedule_id,schedule_name,schedule_date,schedule_start,schedule_endに入れる
+			//JSPからもらったスケジュールの値を使うためのコード
 			
 			
 			schedule.setId(id);
@@ -87,15 +88,15 @@ public class ScheduleModifyAction extends HttpServlet {
 			schedule.setSchedule_date(schedule_date);
 			schedule.setSchedule_start(schedule_start);
 			schedule.setSchedule_end(schedule_end);
-			//setter를 이용해 스케쥴 인스턴스의 schedule_end에 schedule_end값을 삽입
+			//setterを利用してscheduleに値を入れる
 			
 			
 			ScheduleDatabase.modifySchedule(schedule);
-			//ScheduleDatabase 클래스의 modifySchedule메서드에 schedule를 입력하여 실행
+			//scheduleを入れてmodifyScheduleメソッドを実行
 			
 			response.sendRedirect("schedule.do");
-			//schedule.do 로 리다이렉트 시킴
-			//변경이 끝나면 스케쥴 화면으로 되돌아가기
+			//schedule.doにリダイレクト
+			//変更が終わったらスケジュール画面に戻る
 	}
 
 }
